@@ -96,6 +96,84 @@ main{padding:22px 4%}
 .features{grid-template-columns:repeat(2,1fr);margin:0 4% 22px}
 .feature:last-child{grid-column:1/-1}
 }
+  
+.hero-slider {
+  min-height: 360px;
+  margin: 24px 0;
+  padding: 42px;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  background: linear-gradient(110deg, #160b2d, #38205b);
+  border: 1px solid #59377d;
+}
+
+.hero-content {
+  max-width: 540px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-label {
+  color: #d6a8ff;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.hero-content h1 {
+  font-size: clamp(30px, 5vw, 54px);
+  margin: 14px 0;
+}
+
+.hero-content p {
+  line-height: 1.6;
+}
+
+.hero-button {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 13px 20px;
+  border-radius: 10px;
+  background: #9b5cff;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero-controls {
+  position: absolute;
+  right: 24px;
+  bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 3;
+}
+
+.hero-controls button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff20;
+  color: white;
+  border: 1px solid #ffffff50;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .hero-slider {
+    min-height: 310px;
+    padding: 24px 20px 76px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+}
+
 </style>
 </head>
 
@@ -114,6 +192,23 @@ main{padding:22px 4%}
     <a href="#new">✦ New</a>
   </div>
 </header>
+
+<section class="hero-slider" id="heroSlider">
+  <div class="hero-content">
+    <p class="hero-label">✦ LATEST ANIME UPLOADS</p>
+    <h1 id="heroTitle">Jujutsu Kaisen</h1>
+    <p id="heroDescription">Discover your next favourite anime.</p>
+    <a id="heroButton" href="#anime-list" class="hero-button">
+      Explore Anime →
+    </a>
+  </div>
+
+  <div class="hero-controls">
+    <button type="button" id="heroPrev">❮</button>
+    <span id="heroCount">01 / 03</span>
+    <button type="button" id="heroNext">❯</button>
+  </div>
+</section>
 
 <nav>
   <a class="active" href="#">HOME</a>
@@ -340,5 +435,57 @@ render();
 renderNew();
 renderOngoing();
 </script>
+  
+<script>
+const heroSlides = [
+  {
+    title: "Jujutsu Kaisen",
+    description: "Curses, powerful sorcerers and intense battles.",
+    link: "#anime-list"
+  },
+  {
+    title: "Solo Leveling",
+    description: "Follow a hunter on his extraordinary journey.",
+    link: "#anime-list"
+  },
+  {
+    title: "Demon Slayer",
+    description: "An epic adventure filled with courage and demons.",
+    link: "#anime-list"
+  }
+];
+
+let heroIndex = 0;
+
+function showHeroSlide(index) {
+  const slide = heroSlides[index];
+
+  document.getElementById("heroTitle").textContent = slide.title;
+  document.getElementById("heroDescription").textContent = slide.description;
+  document.getElementById("heroButton").href = slide.link;
+  document.getElementById("heroCount").textContent =
+    String(index + 1).padStart(2, "0") +
+    " / " +
+    String(heroSlides.length).padStart(2, "0");
+}
+
+document.getElementById("heroPrev").addEventListener("click", () => {
+  heroIndex = (heroIndex - 1 + heroSlides.length) % heroSlides.length;
+  showHeroSlide(heroIndex);
+});
+
+document.getElementById("heroNext").addEventListener("click", () => {
+  heroIndex = (heroIndex + 1) % heroSlides.length;
+  showHeroSlide(heroIndex);
+});
+
+showHeroSlide(heroIndex);
+
+setInterval(() => {
+  heroIndex = (heroIndex + 1) % heroSlides.length;
+  showHeroSlide(heroIndex);
+}, 5000);
+</script>
+
 </body>
 </html>
