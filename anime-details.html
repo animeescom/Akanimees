@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anime Details | Ak animees</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#09070e;color:#fff;font-family:Arial,sans-serif}
+header{padding:20px 6%;border-bottom:1px solid #30213d}
+.logo{font-size:27px;font-weight:bold;color:#b76aff;text-decoration:none}
+.logo span{color:white}
+main{max-width:1000px;margin:35px auto;padding:20px}
+.back{color:#d8a5ff;text-decoration:none}
+.details{display:grid;grid-template-columns:280px 1fr;gap:30px;margin-top:25px}
+.poster{width:100%;border-radius:14px;border:1px solid #583477}
+h1{font-size:38px;margin:5px 0 12px}
+.tags span{display:inline-block;background:#251533;color:#d9b5ff;padding:7px 11px;border-radius:7px;margin:4px 4px 4px 0}
+.rating{color:#ffd15c;margin:18px 0}
+p{line-height:1.7;color:#d1c6db}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.item{background:#17111f;padding:13px;border:1px solid #30213d;border-radius:8px}
+.item small{display:block;color:#bda9ce;margin-bottom:6px}
+.item strong{font-size:14px}
+h2{margin-top:30px}
+footer{text-align:center;color:#9d8baa;padding:25px}
+@media(max-width:600px){
+ main{padding:16px;margin:15px auto}
+ .details{grid-template-columns:1fr;gap:20px}
+ .poster{max-width:230px;display:block;margin:auto}
+ h1{font-size:30px}
+ .info{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<header>
+<a class="logo" href="index.html">Ak <span>animees</span></a>
+</header>
+
+<main>
+<a class="back" href="index.html">← Back to Anime List</a>
+<section class="details">
+<div>
+<img class="poster" id="poster" src="https://placehold.co/400x560/160b2b/d8a5ff?text=Solo+Leveling" alt="Anime poster">
+</div>
+<div>
+<div class="tags" id="genres"></div>
+<h1 id="title">Solo Leveling</h1>
+<div class="rating" id="rating">⭐ 8.7 / 10</div>
+<p id="description">Follow a hunter who gains a mysterious power that allows him to grow stronger and face increasingly dangerous challenges.</p>
+<div class="info">
+<div class="item"><small>Seasons</small><strong id="seasons">2</strong></div>
+<div class="item"><small>Episodes</small><strong id="episodes">25</strong></div>
+<div class="item"><small>Release Year</small><strong id="year">2024</strong></div>
+<div class="item"><small>Language</small><strong id="languages">Japanese, English</strong></div>
+<div class="item"><small>Main Character</small><strong id="character">Sung Jinwoo</strong></div>
+<div class="item"><small>Status</small><strong id="status">Released</strong></div>
+</div>
+<h2>Synopsis</h2>
+<p id="synopsis">An ordinary hunter discovers a unique ability to level up and embarks on a journey to become stronger.</p>
+</div>
+</section>
+</main>
+<footer>© Ak animees • Your Anime Destination</footer>
+
+<script>
+const animeData = {
+"solo-leveling":{
+title:"Solo Leveling",genre:["Action","Fantasy","Adventure"],rating:"8.7 / 10",
+poster:"https://placehold.co/400x560/160b2b/d8a5ff?text=Solo+Leveling",
+description:"A hunter discovers a mysterious ability that lets him grow stronger.",
+seasons:"2",episodes:"25",year:"2024",languages:"Japanese, English",
+character:"Sung Jinwoo",status:"Released",
+synopsis:"Sung Jinwoo begins as a low-ranked hunter and gains a remarkable ability that changes his life."
+},
+"jujutsu-kaisen":{
+title:"Jujutsu Kaisen",genre:["Action","Supernatural"],rating:"8.5 / 10",
+poster:"https://placehold.co/400x560/20102c/d8a5ff?text=Jujutsu+Kaisen",
+description:"A student becomes involved in the dangerous world of curses.",
+seasons:"2",episodes:"47",year:"2020",languages:"Japanese, English",
+character:"Yuji Itadori",status:"Released",
+synopsis:"Yuji Itadori enters a world of curses, sorcerers and supernatural battles."
+},
+"demon-slayer":{
+title:"Demon Slayer",genre:["Action","Fantasy"],rating:"8.4 / 10",
+poster:"https://placehold.co/400x560/291323/ffb4c8?text=Demon+Slayer",
+description:"A young swordsman seeks a way to save his sister.",
+seasons:"4",episodes:"63",year:"2019",languages:"Japanese, English",
+character:"Tanjiro Kamado",status:"Released",
+synopsis:"Tanjiro begins a dangerous journey after a demon attack changes his family forever."
+},
+"one-piece":{
+title:"One Piece",genre:["Adventure","Fantasy","Comedy"],rating:"8.7 / 10",
+poster:"https://placehold.co/400x560/102b43/9bdcff?text=One+Piece",
+description:"A young pirate sails across the seas in search of a legendary treasure.",
+seasons:"Multiple",episodes:"1000+",year:"1999",languages:"Japanese, English",
+character:"Monkey D. Luffy",status:"Ongoing",
+synopsis:"Luffy and his crew travel across dangerous seas in search of the legendary One Piece."
+},
+"frieren":{
+title:"Frieren: Beyond Journey's End",genre:["Fantasy","Adventure"],rating:"9.3 / 10",
+poster:"https://placehold.co/400x560/173329/bbffdd?text=Frieren",
+description:"An elf mage reflects on friendship and time after a great adventure.",
+seasons:"1",episodes:"28",year:"2023",languages:"Japanese, English",
+character:"Frieren",status:"Released",
+synopsis:"After the hero's journey ends, Frieren begins to understand the people and moments she once took for granted."
+},
+"your-name":{
+title:"Your Name",genre:["Romance","Fantasy","Drama"],rating:"8.8 / 10",
+poster:"https://placehold.co/400x560/322047/ffdbfa?text=Your+Name",
+description:"Two teenagers discover an extraordinary connection across distance and time.",
+seasons:"Movie",episodes:"1 movie",year:"2016",languages:"Japanese, English",
+character:"Mitsuha and Taki",status:"Movie",
+synopsis:"A mysterious connection brings two teenagers together in a story of memory, distance and fate."
+},
+"kaguya-sama":{
+title:"Kaguya-sama: Love Is War",genre:["Romance","Comedy"],rating:"8.5 / 10",
+poster:"https://placehold.co/400x560/35192c/ffc8df?text=Kaguya-sama",
+description:"Two clever students turn romance into a battle of wits.",
+seasons:"3",episodes:"37",year:"2019",languages:"Japanese, English",
+character:"Kaguya Shinomiya",status:"Released",
+synopsis:"Two proud student council members try to make the other confess their feelings first."
+},
+"black-clover":{
+title:"Black Clover",genre:["Action","Fantasy"],rating:"8.2 / 10",
+poster:"https://placehold.co/400x560/172819/cbffb9?text=Black+Clover",
+description:"A boy without magic dreams of becoming the Wizard King.",
+seasons:"1",episodes:"170",year:"2017",languages:"Japanese, English",
+character:"Asta",status:"Released",
+synopsis:"Asta refuses to give up on his dream in a world where magic defines much of society."
+}
+};
+
+const params = new URLSearchParams(location.search);
+const key = params.get("anime") || "solo-leveling";
+const a = animeData[key] || animeData["solo-leveling"];
+
+document.title = a.title + " | Ak animees";
+document.getElementById("title").textContent = a.title;
+document.getElementById("poster").src = a.poster;
+document.getElementById("poster").alt = a.title + " poster";
+document.getElementById("rating").textContent = "⭐ " + a.rating;
+document.getElementById("description").textContent = a.description;
+document.getElementById("synopsis").textContent = a.synopsis;
+document.getElementById("seasons").textContent = a.seasons;
+document.getElementById("episodes").textContent = a.episodes;
+document.getElementById("year").textContent = a.year;
+document.getElementById("languages").textContent = a.languages;
+document.getElementById("character").textContent = a.character;
+document.getElementById("status").textContent = a.status;
+document.getElementById("genres").innerHTML = a.genre.map(g=>"<span>"+g+"</span>").join("");
+</script>
+</body>
+</html>
